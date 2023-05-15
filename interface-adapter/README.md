@@ -45,3 +45,27 @@ To avoid that, one could implement the DoSomething interface to add traces and l
     func (real RealImpl) DoSomething(ctx context.Context) {
         // just do what it is supposed to do
     }
+
+## Running
+
+To run the project, use
+
+    go run main.go
+
+This will start 2 servers, one with log (using the adapters), and one without it.
+
+Call the endpoints at :8080 to access the server without log, and :8081 to access the server that logs everything
+
+```
+curl -L -X POST 'http://localhost:8080/items' \
+-H 'Content-Type: application/json' \
+--data-raw '{"id": 2}'
+
+curl -L -X GET 'http://localhost:8080/items/2'
+
+curl -L -X POST 'http://localhost:8081/items' \
+-H 'Content-Type: application/json' \
+--data-raw '{"id": 3}'
+
+curl -L -X GET 'http://localhost:8081/items/3'
+``` 
