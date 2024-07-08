@@ -3,7 +3,7 @@ package item
 import (
 	"context"
 
-	"github.com/eltonjr/go-experiments/interface-adapter/pkg/log"
+	"github.com/eltonjr/go-experiments/decorator-pattern/pkg/log"
 )
 
 type repoLogger struct {

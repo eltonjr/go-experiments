@@ -3,7 +3,7 @@ package server
 import (
 	"net/http"
 
-	"github.com/eltonjr/go-experiments/interface-adapter/internal/item"
+	"github.com/eltonjr/go-experiments/decorator-pattern/internal/item"
 )
 
 const pathPrefix = "/items/"

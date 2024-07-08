@@ -1,8 +1,8 @@
-# Interface adapter
+# Decorator pattern
 
-This is a simple proof-of-concept of an interface calling itself.
+This is a simple proof-of-concept of an interface calling itself, also known as a Decorator design pattern.
 
-To avoid bloating the real implementation of anything with logs, traces, profiling etc, one could implement the interface adding those adapters just for that, leaving the real implementation cleaner.
+To avoid bloating the real implementation of anything with logs, traces, profiling etc, one could implement the interface adding those decorators just for that, leaving the real implementation cleaner.
 
 It's not unusual to have something like this everywhere in your codebase:
 
@@ -23,13 +23,13 @@ To avoid that, one could implement the DoSomething interface to add traces and l
         DoSomething(ctx context.Context)
     }
 
-    // DoSomethingAdapter has an DoSomethinger but also implements DoSomethinger
+    // DoSomethingDecorator has an DoSomethinger but also implements DoSomethinger
     // just to add instrumentation
-    type DoSomethingAdapter struct {
+    type DoSomethingDecorator struct {
         impl DoSomethinger
     }
 
-    func (adp DoSomethingAdapter) DoSomething(ctx context.Context) {
+    func (deco DoSomethingDecorator) DoSomething(ctx context.Context) {
         var span trace.Span
         ctx, span = tracer.Start(ctx, "DoSomething") // instrument with traces
         defer span.End()
@@ -37,7 +37,7 @@ To avoid that, one could implement the DoSomething interface to add traces and l
         logger.Debug("at DoSomething") // instrument with log
         defer logger.Debug("finished DoSomething")
 
-        adp.impl.DoSomething(ctx)
+        deco.impl.DoSomething(ctx)
     }
 
     // RealImpl also implements DoSomethinger
@@ -52,7 +52,7 @@ To run the project, use
 
     go run main.go
 
-This will start 2 servers, one with log (using the adapters), and one without it.
+This will start 2 servers, one with log (using the decorator), and one without it.
 
 Call the endpoints at :8080 to access the server without log, and :8081 to access the server that logs everything
 

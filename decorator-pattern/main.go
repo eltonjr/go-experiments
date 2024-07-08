@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/eltonjr/go-experiments/interface-adapter/cmd/server"
-	"github.com/eltonjr/go-experiments/interface-adapter/internal/item"
-	"github.com/eltonjr/go-experiments/interface-adapter/pkg/log"
+	"github.com/eltonjr/go-experiments/decorator-pattern/cmd/server"
+	"github.com/eltonjr/go-experiments/decorator-pattern/internal/item"
+	"github.com/eltonjr/go-experiments/decorator-pattern/pkg/log"
 )
 
 func main() {

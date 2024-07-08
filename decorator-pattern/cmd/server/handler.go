@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/eltonjr/go-experiments/interface-adapter/internal/item"
+	"github.com/eltonjr/go-experiments/decorator-pattern/internal/item"
 )
 
 func (s *server) GetItem(w http.ResponseWriter, req *http.Request) {
