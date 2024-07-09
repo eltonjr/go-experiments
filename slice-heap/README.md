@@ -122,3 +122,8 @@ Showing nodes accounting for 10GB, 100% of 10GB total
          0     0%   100%       10GB   100%  main.main
          0     0%   100%       10GB   100%  runtime.main
 ```
+
+This is described in this [go blog post](https://go.dev/blog/slices-intro)
+
+> #### A possible “gotcha”
+> As mentioned earlier, re-slicing a slice doesn’t make a copy of the underlying array. **The full array will be kept in memory until it is no longer referenced. Occasionally this can cause the program to hold all the data in memory when only a small piece of it is needed.**
