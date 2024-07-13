@@ -127,3 +127,8 @@ This is described in this [go blog post](https://go.dev/blog/slices-intro)
 
 > #### A possible “gotcha”
 > As mentioned earlier, re-slicing a slice doesn’t make a copy of the underlying array. **The full array will be kept in memory until it is no longer referenced. Occasionally this can cause the program to hold all the data in memory when only a small piece of it is needed.**
+
+## Extra
+
+* What is the cap of the resulting slice?
+* What happens if you keep the last byte instead of the first one?
