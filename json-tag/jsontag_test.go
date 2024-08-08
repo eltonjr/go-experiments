@@ -5,29 +5,44 @@ import (
 	"testing"
 )
 
-var rawjson = []byte(`{
-	"tag": "tag",
-	"tag2": "tag2",
-	"tag3": "tag3",
-	"tag4": "tag4",
-	"tag5": "tag5",
-	"tag6": "tag6",
-	"tag7": "tag7",
-	"tag8": "tag8",
-	"tag9": "tag9",
-	"tag10": "tag10"
-}`)
-
-func BenchmarkJsonTag(b *testing.B) {
+func BenchmarkJsonTagSmall(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		var w WithTag
-		json.Unmarshal(rawjson, &w)
+		var w WithTagSmall
+		json.Unmarshal(rawjsonSmall, &w)
 	}
 }
 
-func BenchmarkJsonNoTag(b *testing.B) {
+func BenchmarkJsonNoTagSmall(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		var w WithoutTag
-		json.Unmarshal(rawjson, &w)
+		var w WithoutTagSmall
+		json.Unmarshal(rawjsonSmall, &w)
+	}
+}
+
+func BenchmarkJsonTagMedium(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var w WithTagMedium
+		json.Unmarshal(rawjsonMedium, &w)
+	}
+}
+
+func BenchmarkJsonNoTagMedium(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var w WithoutTagMedium
+		json.Unmarshal(rawjsonMedium, &w)
+	}
+}
+
+func BenchmarkJsonTagLarge(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var w WithTagLarge
+		json.Unmarshal(rawjsonLarge, &w)
+	}
+}
+
+func BenchmarkJsonNoTagLarge(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var w WithoutTagLarge
+		json.Unmarshal(rawjsonLarge, &w)
 	}
 }
